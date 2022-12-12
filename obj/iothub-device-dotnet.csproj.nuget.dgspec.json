@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/edcan/projects/iothub-device-dotnet/iothub-device-dotnet.csproj": {}
+  },
+  "projects": {
+    "/home/edcan/projects/iothub-device-dotnet/iothub-device-dotnet.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/edcan/projects/iothub-device-dotnet/iothub-device-dotnet.csproj",
+        "projectName": "iothub-device-dotnet",
+        "projectPath": "/home/edcan/projects/iothub-device-dotnet/iothub-device-dotnet.csproj",
+        "packagesPath": "/home/edcan/.nuget/packages/",
+        "outputPath": "/home/edcan/projects/iothub-device-dotnet/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/edcan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Azure.Devices.Client": {
+              "target": "Package",
+              "version": "[1.41.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/edcan/dotnet/.dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
