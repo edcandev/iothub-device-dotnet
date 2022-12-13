@@ -4,10 +4,8 @@ using System.Text;
 public class Program {
 
     static string ? IOT_HUB_DEVICE_CONN_STRING;
-    //static IotHubDeviceClient deviceClient;
-    static int messageCount = 0;
 
-    const string IOT_HUB_DEVICE = "raspi-dotnet";
+    static int messageCount = 0;
 
     const TransportType IOT_HUB_PROTOCOL = TransportType.Mqtt;
 
@@ -21,25 +19,24 @@ public class Program {
         try {
             while(true) {
 
+                messageCount ++;
+                Console.WriteLine("Sending message...");
+
+                // AQUÍ VA 
+                // EL
+                // CÓDIGO DEL  BMP280
+                // DEBE RETORNAR DOS DOUBLE
+                // SON ENVIADOS AL METODO Y A AZURE
+
                 var random = new Random();
                 double randomTempeture = (25 * random.NextDouble());
                 double randomHumidity = random.NextDouble();
 
-                messageCount ++;
-
-                Console.WriteLine("Sending message...");
-
-                
-
-
-
-
-
-                
                 var ret = enviarMensajeIoTHub(randomTempeture, randomHumidity);
-
                 ret.Wait();
+
                 Console.WriteLine("Message was sent!\n");
+
                 Thread.Sleep(1000);
             }
         }
@@ -53,7 +50,6 @@ public class Program {
 
         DeviceClient deviceClient = DeviceClient.CreateFromConnectionString(IOT_HUB_DEVICE_CONN_STRING, IOT_HUB_PROTOCOL);//i tried other trsnsports
         try {
-
             var payload = "{" +
                 "\"messageId\":"+ messageCount +"," +
                 "\"deviceId\":" + "\"Raspi .NET\"," +
@@ -61,8 +57,7 @@ public class Program {
                 "\"humidity\":" + humidity.ToString() +                
                 "}";
 
-                // Sending message: {"messageId":1,"deviceId":"Raspberry Pi Web Client","temperature":3 ,"humidity":6}
-
+            // Sending message: {"messageId":1,"deviceId":"Raspberry Pi Web Client","temperature":3 ,"humidity":6}
             var msg = new Message(Encoding.UTF8.GetBytes(payload));
             Console.WriteLine(payload);
             await deviceClient.SendEventAsync(msg);
