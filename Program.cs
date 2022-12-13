@@ -15,6 +15,9 @@ public class Program {
 
         IOT_HUB_DEVICE_CONN_STRING = Environment.GetEnvironmentVariable("IOT_HUB_DEVICE_CONN_STRING");
 
+        // CONN = "HostName=RaspberryPiSensor.azure-devices.net;DeviceId=raspi-dotnet;SharedAccessKey=igJMee9NzixtywvYNA6/x8JcfzXMxwxKdI6iBgh8Xdo="
+
+
         try {
             while(true) {
 
@@ -26,10 +29,15 @@ public class Program {
 
                 Console.WriteLine("Sending message...");
 
+                
+
+
+
 
 
                 
                 var ret = enviarMensajeIoTHub(randomTempeture, randomHumidity);
+
                 ret.Wait();
                 Console.WriteLine("Message was sent!\n");
                 Thread.Sleep(1000);
@@ -43,7 +51,7 @@ public class Program {
 
     static async Task enviarMensajeIoTHub(double temperature, double humidity) {
 
-        var deviceClient = DeviceClient.CreateFromConnectionString(IOT_HUB_DEVICE_CONN_STRING, IOT_HUB_PROTOCOL);//i tried other trsnsports
+        DeviceClient deviceClient = DeviceClient.CreateFromConnectionString(IOT_HUB_DEVICE_CONN_STRING, IOT_HUB_PROTOCOL);//i tried other trsnsports
         try {
 
             var payload = "{" +
