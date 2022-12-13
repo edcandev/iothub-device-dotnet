@@ -19,12 +19,16 @@ public class Program {
             while(true) {
 
                 var random = new Random();
-                int randomTempeture = random.Next(20, 35);
-                int randomHumidity = random.Next(50, 100);
+                double randomTempeture = (25 * random.NextDouble());
+                double randomHumidity = random.NextDouble();
 
                 messageCount ++;
 
                 Console.WriteLine("Sending message...");
+
+
+
+                
                 var ret = enviarMensajeIoTHub(randomTempeture, randomHumidity);
                 ret.Wait();
                 Console.WriteLine("Message was sent!\n");
@@ -37,13 +41,13 @@ public class Program {
         }
     }
 
-    static async Task enviarMensajeIoTHub(int temperature, int humidity) {
+    static async Task enviarMensajeIoTHub(double temperature, double humidity) {
 
         var deviceClient = DeviceClient.CreateFromConnectionString(IOT_HUB_DEVICE_CONN_STRING, IOT_HUB_PROTOCOL);//i tried other trsnsports
         try {
 
             var payload = "{" +
-                "\"messageId\":"+  "," +
+                "\"messageId\":"+ messageCount +"," +
                 "\"deviceId\":" + "\"Raspi .NET\"," +
                 "\"temperature\":" + temperature.ToString() + "," +
                 "\"humidity\":" + humidity.ToString() +                
